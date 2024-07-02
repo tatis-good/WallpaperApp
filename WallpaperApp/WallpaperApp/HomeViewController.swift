@@ -13,9 +13,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 10
+        layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
@@ -113,20 +113,48 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             }
         }
         
+    
         return cell
     }
 }
+
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let sideMargin: CGFloat = 16
+    let itemWidth = (collectionView.bounds.width - (sideMargin * 2)) / (indexPath.item == 0 ? 1 : 2)
+    return CGSize(width: itemWidth, height: itemWidth)
+}
+
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
             
-            let topWidth = collectionView.bounds.width - 32
+            let topWidth = collectionView.bounds.width - 30
             return CGSize(width: topWidth, height: topWidth)
         } else {
             
-            let otherWidth = (collectionView.bounds.width - 32)/2
+            let otherWidth = (collectionView.bounds.width - 30)/2
             return CGSize(width: otherWidth, height: otherWidth)
         }
     }
-}
+    
 
+
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "HomeSegue", sender: indexPath)
+      
+ 
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeSegue" {
+            if let destinationVC = segue.destination as? SegueViewController,
+               let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first,
+               let selectedCell = collectionView.cellForItem(at: selectedIndexPath) as? PhotoCollectionViewCell,
+               let selectedImage = selectedCell.imageView.image {
+                destinationVC.selectedImage = selectedImage
+            }
+        }
+    }
+    
+}
