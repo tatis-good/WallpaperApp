@@ -15,6 +15,7 @@ enum FooterTab {
 
 protocol FooterTabViewDelegate: AnyObject {
     func footerTabView(_ footerTabView: FooterTabView, didselectedTab: FooterTab)
+    func switchViewController(selectedTab: FooterTab)
 }
 
 class FooterTabView: UIView {
@@ -22,19 +23,21 @@ class FooterTabView: UIView {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var contentView: UIView!
     
-    var delegate: FooterTabViewDelegate?
+    weak var delegate: FooterTabViewDelegate?
     
     @IBAction func didTapHome(_ sender: Any) {
         delegate?.footerTabView(self, didselectedTab: .home)
-    
+        delegate?.switchViewController(selectedTab: .home)
     }
     
     @IBAction func didTapColorSearch(_ sender: Any) {
         delegate?.footerTabView(self, didselectedTab: .colorsearch)
+        delegate?.switchViewController(selectedTab: .colorsearch)
     }
     
     @IBAction func didTapAppInfo(_ sender: Any) {
         delegate?.footerTabView(self, didselectedTab: .appinfo)
+        delegate?.switchViewController(selectedTab: .appinfo)
     }
     
     //カスタムビューの初期化メソッド
@@ -68,16 +71,6 @@ class FooterTabView: UIView {
             self.addSubview(view)
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

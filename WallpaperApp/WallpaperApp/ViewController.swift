@@ -8,9 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController, FooterTabViewDelegate {
-  
     
-
+    
+    
     @IBOutlet weak var footerTabView: FooterTabView! {
         didSet {
             footerTabView.delegate = self
@@ -45,19 +45,19 @@ class ViewController: UIViewController, FooterTabViewDelegate {
         return viewController
     }()
     
-    private func switchViewController(selectedTab: FooterTab) {
+     func switchViewController(selectedTab: FooterTab) {
         switch selectedTab {
         case .home: add(childViewController: homeViewController)
-                    remove(childViewController: colorSearchViewController)
-                    remove(childViewController: appInfoViewController)
+            remove(childViewController: colorSearchViewController)
+            remove(childViewController: appInfoViewController)
         case .colorsearch: add(childViewController: colorSearchViewController)
-                        remove(childViewController: homeViewController)
-                        remove(childViewController: appInfoViewController)
+            remove(childViewController: homeViewController)
+            remove(childViewController: appInfoViewController)
         case .appinfo: add(childViewController: appInfoViewController)
-                       remove(childViewController: homeViewController)
-                       remove(childViewController: colorSearchViewController)
+            remove(childViewController: homeViewController)
+            remove(childViewController: colorSearchViewController)
         }
-            self.selectedTab = selectedTab
+        self.selectedTab = selectedTab
         view.bringSubviewToFront(footerTabView)
     }
     
@@ -76,10 +76,8 @@ class ViewController: UIViewController, FooterTabViewDelegate {
     }
     
     func footerTabView(_ footerTabView: FooterTabView, didselectedTab: FooterTab) {
+        switchViewController(selectedTab: selectedTab)
     }
    
-    
-}
-
-
+    }
 

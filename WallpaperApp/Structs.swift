@@ -1,23 +1,14 @@
-//
-//  Structs.swift
-//  WallpaperApp
-//
-//  Created by spark-02 on 2024/07/02.
-//
-
 import Foundation
 
 struct UnsplashPhoto: Codable {
     let user: User
     let urls: Urls
     let updatedAt: String
-    let location: Location?
     
     enum CodingKeys: String, CodingKey {
         case user
         case urls
         case updatedAt = "updated_at"
-        case location
     }
 }
 
@@ -32,11 +23,7 @@ struct UserLinks: Codable {
 
 struct Urls: Codable {
     let full: String
+    let regular: String
+    let thumb: String
 }
-
-struct Location: Codable {
-    let name: String?
-}
-
-
 
