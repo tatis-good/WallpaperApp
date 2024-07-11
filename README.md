@@ -17,5 +17,9 @@ TabBarでデフォルト部品ではない､ オリジナルフッターの構�
 デザイン性を意識し､iOS標準のTabBarではなく複数部品を組み合わせた部品をStorboard上で作成して､フッター部分を実装しました｡
 <br><br>
 
+## 苦労した点
+APIを使用してCollectionViewに画像を実装する際のオートレイアウトが定まっておらず、コードで設定しなければならず、講師に助言を受けたり、生成AIに聞くなどして適切なサイズ、レイアウトで実装することができました。
+<br><br>
+
 ## GIFアニメーション
 ![Simulator Screen Recording - iPhone 14 Pro - 2024-07-11 at 16 04 51](https://github.com/tatis-good/WallpaperApp/assets/168057177/15e8ec74-fba6-4961-97d1-c9a4c4abc12a)
