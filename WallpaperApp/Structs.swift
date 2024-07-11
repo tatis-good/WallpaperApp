@@ -4,7 +4,7 @@ struct UnsplashPhoto: Codable {
     let user: User
     let urls: Urls
     let updatedAt: String
-    
+
     enum CodingKeys: String, CodingKey {
         case user
         case urls
@@ -13,8 +13,10 @@ struct UnsplashPhoto: Codable {
 }
 
 struct User: Codable {
+    let username: String
     let name: String
     let links: UserLinks
+    let location: String?
 }
 
 struct UserLinks: Codable {
@@ -25,5 +27,18 @@ struct Urls: Codable {
     let full: String
     let regular: String
     let thumb: String
+}
+
+struct UnsplashPhotos: Decodable {
+    let id: String
+    let urls: UnsplashPhotoURLs
+}
+
+struct UnsplashPhotoURLs: Decodable {
+    let regular: String
+}
+
+struct UnsplashResponse: Decodable {
+    let results: [UnsplashPhoto]
 }
 

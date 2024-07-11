@@ -9,7 +9,7 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
-    
+    var username: String?
     var photo: UnsplashPhoto?
     let imageView: UIImageView = {
            let imageView = UIImageView()
@@ -19,6 +19,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
        }()
     
     func configure(with photo: UnsplashPhoto) {
+        authorLabel.text = photo.user.name
+               username = photo.user.username
             // 画像を設定する
             if let url = URL(string: photo.urls.thumb) {
                 DispatchQueue.global().async {

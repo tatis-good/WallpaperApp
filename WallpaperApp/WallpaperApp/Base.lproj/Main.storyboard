@@ -75,8 +75,11 @@
                                 <rect key="frame" x="15" y="107" width="363" height="70"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="684-4x-1q4">
-                                        <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="35"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="34.333333333333336"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="red">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <buttonConfiguration key="configuration" style="plain" title="red"/>
                                         <connections>
                                             <action selector="redButton:" destination="G0W-sD-SDq" eventType="touchUpInside" id="XbJ-cu-faC"/>
@@ -158,15 +161,24 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BDE-sK-tjF">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctm-sJ-UuW">
+                                                    <rect key="frame" x="86" y="107" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="BDE-sK-tjF" firstAttribute="top" secondItem="NR3-jO-TLb" secondAttribute="top" id="9RX-oH-cm3"/>
                                                 <constraint firstItem="BDE-sK-tjF" firstAttribute="leading" secondItem="NR3-jO-TLb" secondAttribute="leading" id="M9G-Tx-Xeh"/>
                                                 <constraint firstAttribute="bottom" secondItem="BDE-sK-tjF" secondAttribute="bottom" id="ME1-Hp-zqP"/>
+                                                <constraint firstAttribute="bottom" secondItem="ctm-sJ-UuW" secondAttribute="bottom" id="op9-0Z-XS3"/>
                                                 <constraint firstAttribute="trailing" secondItem="BDE-sK-tjF" secondAttribute="trailing" id="r8r-jX-0Zm"/>
+                                                <constraint firstAttribute="trailing" secondItem="ctm-sJ-UuW" secondAttribute="trailing" id="whE-Ya-YqA"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="authorLabel" destination="ctm-sJ-UuW" id="WjS-dn-m9V"/>
                                             <outlet property="imageView" destination="BDE-sK-tjF" id="xqO-1L-wkh"/>
                                             <segue destination="gZS-2R-mQg" kind="show" identifier="ShowPhotoDetail" id="mZf-A9-Ebb"/>
                                         </connections>
@@ -190,7 +202,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="WfH-RV-dhV" id="fAC-41-emI"/>
+                        <outlet property="collectionView" destination="WfH-RV-dhV" id="axo-zc-a5u"/>
+                        <outletCollection property="buttons" destination="684-4x-1q4" collectionClass="NSMutableArray" id="Zfp-V9-Gu5"/>
+                        <outletCollection property="buttons" destination="ZLN-cq-sfY" collectionClass="NSMutableArray" id="rWG-XS-iAi"/>
+                        <outletCollection property="buttons" destination="9cQ-5o-WQS" collectionClass="NSMutableArray" id="ey9-kI-EEZ"/>
+                        <outletCollection property="buttons" destination="QBU-zT-X1D" collectionClass="NSMutableArray" id="IgH-hS-7XA"/>
+                        <outletCollection property="buttons" destination="s8z-Os-q1E" collectionClass="NSMutableArray" id="7Tr-Du-AFO"/>
+                        <outletCollection property="buttons" destination="6W2-qD-8pJ" collectionClass="NSMutableArray" id="8R1-7f-a9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDP-CZ-mbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -543,7 +561,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gBR-bG-UhB"/>
+        <segue reference="mZf-A9-Ebb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="logo" width="360" height="54"/>

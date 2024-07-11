@@ -7,36 +7,49 @@
 
 import UIKit
 
-struct UnsplashPhotos: Decodable {
-    let id: String
-    let urls: UnsplashPhotoURLs
-}
 
-struct UnsplashPhotoURLs: Decodable {
-    let regular: String
-}
-
-struct UnsplashResponse: Decodable {
-    let results: [UnsplashPhoto]
-}
 
 class PhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var authorLabel: UILabel!
+    
+    var photoDict: [String: Any]?
+    var photo: UnsplashPhoto?
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // セルを再利用する前に必要な初期化を行う
+        imageView.image = nil
+    }
     
     func configure(with photo: UnsplashPhoto) {
-            guard let url = URL(string: photo.urls.regular) else {
-                return
-            }
-            
-            DispatchQueue.global(qos: .userInitiated).async {
-                if let data = try? Data(contentsOf: url) {
+        authorLabel.text = photo.user.name
+        authorLabel.textColor = .black
+        authorLabel.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        authorLabel.font = UIFont.systemFont(ofSize: 12)
+        authorLabel.textAlignment = .right
+        
+        self.photo = photo
+                self.photoDict = [
+                    "user": [
+                        "name": photo.user.name,
+                        "username": photo.user.username,
+                        "location": photo.user.location
+                    ],
+                    "updated_at": photo.updatedAt
+                ]
+        if let url = URL(string: photo.urls.regular) {
+            // 非同期に画像を読み込む
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self.imageView.image = UIImage(data: data)
+                        // セルがまだ表示されている場合のみ画像を設定する
+                        self.imageView.image = image
                     }
                 }
             }
         }
     }
+}
 
 

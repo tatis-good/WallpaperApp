@@ -6,24 +6,31 @@
 //
 
 import UIKit
-
+import SafariServices
 class AppInfoViewController: UIViewController {
 
+    let imageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            imageView.isUserInteractionEnabled = true
+            return imageView
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.addSubview(imageView)
+                imageView.frame = view.bounds
+                
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleImageViewTap))
+                imageView.addGestureRecognizer(tapGesture)
+        
     }
-    
+    @objc func handleImageViewTap() {
+           guard let url = URL(string: "https://unsplash.com") else { return }
+           let safariViewController = SFSafariViewController(url: url)
+           present(safariViewController, animated: true, completion: nil)
+       }
+   }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
