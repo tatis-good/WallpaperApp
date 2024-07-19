@@ -18,4 +18,5 @@
 <br><br>
 
 ## GIFアニメーション
-![Simulator Screen Recording - iPhone 14 Pro - 2024-07-11 at 16 04 51](https://github.com/tatis-good/WallpaperApp/assets/168057177/15e8ec74-fba6-4961-97d1-c9a4c4abc12a)
+![wallpaper](https://github.com/user-attachments/assets/ca79692f-13b9-4deb-bbcb-c5e7df9169e5)
+
