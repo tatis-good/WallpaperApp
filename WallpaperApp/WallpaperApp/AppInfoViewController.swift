@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+
 class AppInfoViewController: UIViewController {
 
     let imageView: UIImageView = {
@@ -26,6 +27,7 @@ class AppInfoViewController: UIViewController {
                 imageView.addGestureRecognizer(tapGesture)
         
     }
+    //ロゴをタップするとUnsplash公式サイトに遷移
     @objc func handleImageViewTap() {
            guard let url = URL(string: "https://unsplash.com") else { return }
            let safariViewController = SFSafariViewController(url: url)

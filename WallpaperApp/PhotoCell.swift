@@ -21,7 +21,7 @@ class PhotoCell: UICollectionViewCell {
         // セルを再利用する前に必要な初期化を行う
         imageView.image = nil
     }
-    
+    //作者名を表示する設定
     func configure(with photo: UnsplashPhoto) {
         authorLabel.text = photo.user.name
         authorLabel.textColor = .black
@@ -30,14 +30,14 @@ class PhotoCell: UICollectionViewCell {
         authorLabel.textAlignment = .right
         
         self.photo = photo
-                self.photoDict = [
-                    "user": [
-                        "name": photo.user.name,
-                        "username": photo.user.username,
-                        "location": photo.user.location
-                    ],
-                    "updated_at": photo.updatedAt
-                ]
+        self.photoDict = [
+            "user": [
+                "name": photo.user.name,
+                "username": photo.user.username,
+                "location": photo.user.location
+            ],
+            "updated_at": photo.updatedAt
+        ]
         if let url = URL(string: photo.urls.regular) {
             // 非同期に画像を読み込む
             DispatchQueue.global().async {

@@ -22,8 +22,6 @@
 		8387B2AC2C2A781B00BF14E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387B2AB2C2A781B00BF14E6 /* HomeViewController.swift */; };
 		8387B2AE2C2A860600BF14E6 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387B2AD2C2A860600BF14E6 /* PhotoCollectionViewCell.swift */; };
 		83A931792C33C7210089FE5C /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A931782C33C7210089FE5C /* Structs.swift */; };
-		83A9317B2C33C9370089FE5C /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A9317A2C33C9370089FE5C /* UnsplashAPI.swift */; };
-		83A9317D2C33DAC80089FE5C /* UnsplashAPI.TagSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A9317C2C33DAC80089FE5C /* UnsplashAPI.TagSearch.swift */; };
 		83B7419E2C3239800000FA6E /* FooterTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7419D2C3239800000FA6E /* FooterTabView.swift */; };
 		83B741A02C324D660000FA6E /* ColorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B7419F2C324D660000FA6E /* ColorSearchViewController.swift */; };
 		83B741A22C324D910000FA6E /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B741A12C324D910000FA6E /* AppInfoViewController.swift */; };
@@ -47,8 +45,6 @@
 		8387B2AB2C2A781B00BF14E6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8387B2AD2C2A860600BF14E6 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		83A931782C33C7210089FE5C /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
-		83A9317A2C33C9370089FE5C /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
-		83A9317C2C33DAC80089FE5C /* UnsplashAPI.TagSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.TagSearch.swift; sourceTree = "<group>"; };
 		83B7419D2C3239800000FA6E /* FooterTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FooterTabView.swift; path = WallpaperApp/FooterTabView.swift; sourceTree = "<group>"; };
 		83B7419F2C324D660000FA6E /* ColorSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSearchViewController.swift; sourceTree = "<group>"; };
 		83B741A12C324D910000FA6E /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppInfoViewController.swift; path = WallpaperApp/AppInfoViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +67,6 @@
 				8304B4AF2C352D33008174AF /* PhotoCell.swift */,
 				8304B4AB2C3502A1008174AF /* SectionHeader.xib */,
 				8304B4AD2C3504C2008174AF /* SectionHeader.swift */,
-				83A9317C2C33DAC80089FE5C /* UnsplashAPI.TagSearch.swift */,
 				83B741A12C324D910000FA6E /* AppInfoViewController.swift */,
 				83B7419F2C324D660000FA6E /* ColorSearchViewController.swift */,
 				8319188E2C2E96F0006CDB4D /* FooterTabView.xib */,
@@ -79,7 +74,6 @@
 				8319188C2C2E6CF8006CDB4D /* BigImageViewController.swift */,
 				8319188A2C2E4EBA006CDB4D /* SegueViewController.swift */,
 				83A931782C33C7210089FE5C /* Structs.swift */,
-				83A9317A2C33C9370089FE5C /* UnsplashAPI.swift */,
 				8387B2962C2A593800BF14E6 /* WallpaperApp */,
 				8387B2952C2A593800BF14E6 /* Products */,
 			);
@@ -187,7 +181,6 @@
 				8319188D2C2E6CF8006CDB4D /* BigImageViewController.swift in Sources */,
 				83B741A02C324D660000FA6E /* ColorSearchViewController.swift in Sources */,
 				83A931792C33C7210089FE5C /* Structs.swift in Sources */,
-				83A9317B2C33C9370089FE5C /* UnsplashAPI.swift in Sources */,
 				8319188B2C2E4EBA006CDB4D /* SegueViewController.swift in Sources */,
 				8387B29C2C2A593800BF14E6 /* ViewController.swift in Sources */,
 				8387B2AE2C2A860600BF14E6 /* PhotoCollectionViewCell.swift in Sources */,
@@ -195,7 +188,6 @@
 				8387B29A2C2A593800BF14E6 /* SceneDelegate.swift in Sources */,
 				8304B4AE2C3504C2008174AF /* SectionHeader.swift in Sources */,
 				8387B2AC2C2A781B00BF14E6 /* HomeViewController.swift in Sources */,
-				83A9317D2C33DAC80089FE5C /* UnsplashAPI.TagSearch.swift in Sources */,
 				83B7419E2C3239800000FA6E /* FooterTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

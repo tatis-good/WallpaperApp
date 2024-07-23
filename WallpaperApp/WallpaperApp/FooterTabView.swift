@@ -25,16 +25,17 @@ class FooterTabView: UIView {
     
     weak var delegate: FooterTabViewDelegate?
     
+    //新着写真の画面
     @IBAction func didTapHome(_ sender: Any) {
         delegate?.footerTabView(self, didselectedTab: .home)
         delegate?.switchViewController(selectedTab: .home)
     }
-    
+    //カラー別写真の画面
     @IBAction func didTapColorSearch(_ sender: Any) {
         delegate?.footerTabView(self, didselectedTab: .colorsearch)
         delegate?.switchViewController(selectedTab: .colorsearch)
     }
-    
+    //アプリ概要に画面
     @IBAction func didTapAppInfo(_ sender: Any) {
         delegate?.footerTabView(self, didselectedTab: .appinfo)
         delegate?.switchViewController(selectedTab: .appinfo)
@@ -54,7 +55,7 @@ class FooterTabView: UIView {
         setup()
     }
     
-    
+    //Viewのレイアウト設定
     func setup() {
         contentView.layer.cornerRadius = contentView.frame.height / 2
         contentView.clipsToBounds = true

@@ -9,8 +9,6 @@ import UIKit
 
 class ViewController: UIViewController, FooterTabViewDelegate {
     
-    
-    
     @IBOutlet weak var footerTabView: FooterTabView! {
         didSet {
             footerTabView.delegate = self
@@ -19,11 +17,13 @@ class ViewController: UIViewController, FooterTabViewDelegate {
     
     var selectedTab: FooterTab = .home
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         switchViewController(selectedTab: .home)
+        
     }
+    //フッタータブの設定
     private lazy var homeViewController: HomeViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
@@ -45,7 +45,7 @@ class ViewController: UIViewController, FooterTabViewDelegate {
         return viewController
     }()
     
-     func switchViewController(selectedTab: FooterTab) {
+    func switchViewController(selectedTab: FooterTab) {
         switch selectedTab {
         case .home: add(childViewController: homeViewController)
             remove(childViewController: colorSearchViewController)
@@ -78,6 +78,6 @@ class ViewController: UIViewController, FooterTabViewDelegate {
     func footerTabView(_ footerTabView: FooterTabView, didselectedTab: FooterTab) {
         switchViewController(selectedTab: selectedTab)
     }
-   
-    }
+    
+}
 

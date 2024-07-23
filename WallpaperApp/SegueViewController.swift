@@ -17,25 +17,28 @@ class SegueViewController: UIViewController {
     @IBOutlet weak var updateAtLabel: UILabel!
     
     var selectedImage: UIImage?
-    var selectedImage2: UIImage?
     var authorURL: String?
     var wallPaper: UnsplashPhoto?
-    var wallPaper2: UnsplashPhoto?
+    var wallPaperColor: UnsplashPhoto?
     var authorName: String?
     var username: String?
     var location: String?
     var updatedAt: String?
     var name: String?
     var unsplashResponse: UnsplashResponse?
+    var photo: UnsplashPhoto?
+    private var photos: [[String: Any]] = []
+    var jaValue: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //画像の表示
         if let image = selectedImage {
             imageView.image = image
         }
-      
         
+        //imageViewとLabelにタップジェスチャーの追加、作者・配信地・更新日・タイトルの表示設定
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped(_:)))
         imageView.addGestureRecognizer(tapGesture)
         imageView.isUserInteractionEnabled = true
@@ -46,12 +49,15 @@ class SegueViewController: UIViewController {
         sourceLabel.text = location
         updateAtLabel.text = updatedAt
         
-      
+        if let jaTitle = jaValue {
+            if let title = jaTitle.split(separator: "-").first {
+                self.title = String(title)
+            } else {
+                print("タイトル")
+            }
+        }
     }
-   
-
-
-    
+    //作者のURLに遷移する設定
     @objc func authorLabelTapped() {
         if let authorURL = authorURL {
             if let url = URL(string: authorURL) {
@@ -59,6 +65,7 @@ class SegueViewController: UIViewController {
             }
         }
     }
+    //Segueの設定
     @objc func imageViewTapped(_ gesture: UITapGestureRecognizer) {
         performSegue(withIdentifier: "ImageSegue", sender: self)
     }
@@ -70,10 +77,10 @@ class SegueViewController: UIViewController {
             }
         }
     }
-   }
-    
+}
 
-    
+
+
 
 
 

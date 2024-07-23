@@ -4,11 +4,15 @@ struct UnsplashPhoto: Codable {
     let user: User
     let urls: Urls
     let updatedAt: String
-
+    var ja: String?
+    let alternativeslags: [String: String?]
+    
     enum CodingKeys: String, CodingKey {
         case user
         case urls
         case updatedAt = "updated_at"
+        case ja
+        case alternativeslags = "alternative_slugs"
     }
 }
 

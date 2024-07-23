@@ -3,23 +3,8 @@ import UIKit
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     
-    
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.sectionInsetReference = .fromSafeArea
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
-        return collectionView
-    }()
-    
     private var photos: [[String: Any]] = []
-    
     private let AccessKey = "cwcyr_9_PKVl7r8428TGviniDw9af6e2WLp2AjKXahY"
-    
     var wallPaper: UnsplashPhoto?
     
     override func viewDidLoad() {
@@ -34,6 +19,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         fetchRandomPhotos()
     }
+    //新着写真の取得API
     private func fetchRandomPhotos() {
         guard let url = URL(string: "https://api.unsplash.com/photos/?per_page=5&order_by=latest&client_id=\(AccessKey)") else {
             return
@@ -73,8 +59,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         task.resume()
     }
+    
 
     
+    //ヘッダーの高さの設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 50)
     }
@@ -87,7 +75,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! SectionHeader
         
-        // ヘッダービューの内容を設定する
         headerView.titleLabel.text = "新着写真"
         headerView.titleLabel.textAlignment = .left
         headerView.titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16).isActive = true
@@ -96,13 +83,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return headerView
     }
     
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
-    
+    //画像の詳細情報の取得設定
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
         
@@ -139,7 +123,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         return cell
     }
-    
+    //余白の設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let edgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let numberOfItemsPerRow: CGFloat = 2
@@ -157,10 +141,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "HomeSegue", sender: indexPath)
-    }
+    //コレクションビューのレイアウト・余白等の設定
+      let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInsetReference = .fromSafeArea
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
+        return collectionView
+    }()
     
+    //日付の設定
     func formatDate(_ dateString: String) -> String {
         let formatter = ISO8601DateFormatter()
         guard let date = formatter.date(from: dateString) else { return dateString }
@@ -169,6 +163,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         displayFormatter.dateFormat = "yyyy年MM月dd日"
         
         return displayFormatter.string(from: date)
+    }
+    //Segueの設定
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "HomeSegue", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -180,8 +178,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
            let userDict = photoDict["user"] as? [String: Any],
            let name = userDict["name"] as? String,
            let username = userDict["username"] as? String,
-           let updatedAt = photoDict["updated_at"] as? String
-        { 
+           let updatedAt = photoDict["updated_at"] as? String,
+           let alternativeslag = photoDict["alternative_slugs"] as? [String: Any],
+           let jaValue = alternativeslag["ja"] as? String
+        {
             destinationVC.selectedImage = selectedCell.imageView.image
             destinationVC.wallPaper = wallPaper
             destinationVC.username = username
@@ -189,14 +189,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             destinationVC.location = userDict["location"] as? String ?? ""
             destinationVC.authorURL = (userDict["links"] as? [String: Any])?["html"] as? String
             destinationVC.updatedAt = formatDate(updatedAt)
-                   
+            destinationVC.jaValue = jaValue
+            
         }
     }
-
+    
 }
 extension Collection {
     subscript(safe index: Index) -> Iterator.Element? {
         return indices.contains(index) ? self[index] : nil
     }
-   
+    
 }

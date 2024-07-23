@@ -141,7 +141,7 @@
                                     <constraint firstItem="s8z-Os-q1E" firstAttribute="top" secondItem="Dkg-NE-Qeq" secondAttribute="top" id="y9t-F3-2UO"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WfH-RV-dhV">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WfH-RV-dhV">
                                 <rect key="frame" x="0.0" y="177" width="393" height="641"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GGb-ME-48b">
@@ -202,13 +202,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blackButton" destination="6W2-qD-8pJ" id="qEf-e0-jRS"/>
+                        <outlet property="blueButton" destination="9cQ-5o-WQS" id="fwi-Ed-1d3"/>
                         <outlet property="collectionView" destination="WfH-RV-dhV" id="axo-zc-a5u"/>
-                        <outletCollection property="buttons" destination="684-4x-1q4" collectionClass="NSMutableArray" id="Zfp-V9-Gu5"/>
-                        <outletCollection property="buttons" destination="ZLN-cq-sfY" collectionClass="NSMutableArray" id="rWG-XS-iAi"/>
-                        <outletCollection property="buttons" destination="9cQ-5o-WQS" collectionClass="NSMutableArray" id="ey9-kI-EEZ"/>
-                        <outletCollection property="buttons" destination="QBU-zT-X1D" collectionClass="NSMutableArray" id="IgH-hS-7XA"/>
-                        <outletCollection property="buttons" destination="s8z-Os-q1E" collectionClass="NSMutableArray" id="7Tr-Du-AFO"/>
-                        <outletCollection property="buttons" destination="6W2-qD-8pJ" collectionClass="NSMutableArray" id="8R1-7f-a9O"/>
+                        <outlet property="greenButton" destination="s8z-Os-q1E" id="er8-30-1zs"/>
+                        <outlet property="redButton" destination="684-4x-1q4" id="FyY-Bv-PKV"/>
+                        <outlet property="whiteButton" destination="QBU-zT-X1D" id="NMW-KY-VfW"/>
+                        <outlet property="yellowButton" destination="ZLN-cq-sfY" id="O7p-UZ-HPZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDP-CZ-mbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -522,17 +522,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmf-Ii-tUj">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bjU-Hc-PYU">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bjU-Hc-PYU">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="bjU-Hc-PYU" firstAttribute="top" secondItem="zmf-Ii-tUj" secondAttribute="top" id="F4W-Kn-pbg"/>
-                                            <constraint firstItem="bjU-Hc-PYU" firstAttribute="leading" secondItem="zmf-Ii-tUj" secondAttribute="leading" id="Z0y-En-L4G"/>
-                                            <constraint firstAttribute="trailing" secondItem="bjU-Hc-PYU" secondAttribute="trailing" id="p2J-T8-ltb"/>
-                                            <constraint firstAttribute="bottom" secondItem="bjU-Hc-PYU" secondAttribute="bottom" id="ykj-bv-VeQ"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -561,7 +556,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mZf-A9-Ebb"/>
+        <segue reference="gBR-bG-UhB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="logo" width="360" height="54"/>
